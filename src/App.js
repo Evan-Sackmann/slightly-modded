@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Mage from "./components/Mage";
+import Thief from "./components/Thief";
+import Warrior from "./components/Warrior";
 
 function App() {
+  const [currentStyle, setCurrentStyle] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h1>Choose Combat Style</h1>
+      <div className="main-options">
+        <button onClick={() => setCurrentStyle("Warrior")}>Warrior</button>
+        <button onClick={() => setCurrentStyle("Mage")}>Mage</button>
+        <button onClick={() => setCurrentStyle("Thief")}>Thief</button>
+      </div>
+
+      {currentStyle === "Warrior" && <Warrior />}
+      {currentStyle === "Mage" && <Mage />}
+      {currentStyle === "Thief" && <Thief />}
     </div>
   );
 }
